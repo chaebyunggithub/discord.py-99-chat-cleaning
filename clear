@@ -1,0 +1,23 @@
+    async def clear(self, ctx: commands.Context , amount = 0):
+       await ctx.channel.purge(limit=1)
+       try: 
+        amounttmp = amount
+        if amounttmp < 1001:
+                while amount >= 50:
+                    print(amount)
+                    await ctx.channel.purge(limit=amount)
+                    amount = amount - 50
+                    await asyncio.sleep(1)
+                else:
+                    await ctx.channel.purge(limit=amount)
+                    await ctx.send(content=f"{ctx.author.mention} 메세지를 청소 했어요!" , delete_after=5)
+                    print('메세지를 청소 했어요!')
+        else:
+               await ctx.send(content=f"{ctx.author.mention} 최대 1000개까지 메세지 청소가 가능해요!" , delete_after=5); 
+                    
+        else:
+            print(ctx.author , ' : 청소 명령어 사용 권한이 없어요!')
+            await ctx.send(content=f"{ctx.author.mention} 청소할 권한이 없어요!" , delete_after=5)
+       except:     
+            await ctx.send(content=f"{ctx.author.mention} 봇에게 권한이 존재 하지 않아요!" , delete_after=5
+            
